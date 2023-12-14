@@ -1,0 +1,4 @@
+{
+    "name": "similarity_ model",
+    "implementation": "my_model.MyKulModel"
+}
