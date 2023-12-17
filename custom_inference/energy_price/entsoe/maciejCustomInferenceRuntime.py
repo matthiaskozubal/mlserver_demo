@@ -5,7 +5,8 @@ from mlserver import MLModel, types
 
 class XGBoostModel(MLModel):
     async def load(self):
-        self._model = pickle.load(open(self._settings.uri, "rb"))
+        self._model = pickle.load(open(self._settings.parameters.uri, "rb"))
+        return True
 
     async def predict(
         self, payload: types.InferenceRequest
@@ -23,7 +24,7 @@ class XGBoostModel(MLModel):
                 types.ResponseOutput(
                     name="output",
                     shape=model_output.shape,
-                    dataty="FP32",
+                    datatype="FP32",
                     data=output_data,
                 )
             ],
